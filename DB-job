@@ -1,0 +1,59 @@
+CREATE DATABASE  IF NOT EXISTS `salarydb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `salarydb`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: 127.0.0.1    Database: salarydb
+-- ------------------------------------------------------
+-- Server version	5.6.12-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `job`
+--
+
+DROP TABLE IF EXISTS `job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job` (
+  `job_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_id` int(11) NOT NULL,
+  `job_name` varchar(45) NOT NULL,
+  `comp_type` varchar(10) NOT NULL,
+  `job_description` blob NOT NULL,
+  `job_status` char(1) NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`job_id`),
+  KEY `fk_job_catId_idx` (`cat_id`),
+  CONSTRAINT `fk_job_catId` FOREIGN KEY (`cat_id`) REFERENCES `catagory` (`cat_id`) ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job`
+--
+
+LOCK TABLES `job` WRITE;
+/*!40000 ALTER TABLE `job` DISABLE KEYS */;
+INSERT INTO `job` VALUES (1,1,'General Manager','','qertsert ','A'),(2,1,'Executive Assistant','','','A'),(3,1,'Controller/Office Manager','','','A'),(4,1,'Controller/Chief Financial Officer','','','A'),(5,1,'Human Resource Manager','','','A'),(6,1,'Information Systems/Network Mgr','','','A'),(7,1,'Information Technology Specialist','','','A'),(8,1,'Credit Manager','','','A'),(9,1,'Grower/Fruit Accountant ','','','A'),(10,1,'Accounts Payable Accountant','','','A'),(11,1,'Payroll Accountant','','','A'),(12,1,'Purchasing/Distribution Manager','','','A'),(13,1,'Purchasing Agent/Inventory Control','','','A'),(14,1,'Receptionist','','','A'),(15,1,'Dispatcher','','','A'),(16,1,'Operations/Production Manager','','','A'),(17,1,'Safety/Compliance Officer','','','A'),(18,1,'Food Safety Manager','','','A'),(19,2,'Field Services Manager','','','A'),(20,2,'Fieldman 1-3 years','','','A'),(21,2,'Fieldman 4-6 years','','','A'),(22,2,'Fieldman 7-9 years','','','A'),(23,2,'Fieldman 10+ years','','','A'),(24,3,'Packing House Truck Driver','','','A'),(25,3,'Receiving Clerk','','','A'),(26,3,'Receiving Forklift Operator','','','A'),(27,3,'Presize Supervisor','','','A'),(28,3,'Sorting Supervisor','','','A'),(29,3,'Sorter','','','A'),(30,3,'Sizer Technician ','','','A'),(31,3,'Bin Filler Operator','','','A'),(32,3,'Presize Grade & Cull Analyst','','','A'),(33,3,'Presize Accountant ','','','A'),(34,3,'Bin Repair Operator','','','A'),(35,3,'Presize Forklift Operator','','','A'),(36,3,'Packing Supervisor','','','A'),(37,3,'Packing Line Supervisor','','','A'),(38,3,'Bin  Dumper','','','A'),(39,3,'Packer - Hourly','','','A'),(40,3,'Packer - Piece Rate - Reds','','','A'),(41,3,'Packer - Piece Rate - Goldens','','','A'),(42,3,'Packer - Piece Rate - Pears','','','A'),(43,3,'Box Machine Operator','','','A'),(44,3,'Stamper','','','A'),(45,3,'Glue & Strap Machine Operator','','','A'),(46,3,'Supply Supervisor','','','A'),(47,3,'Packing Line Attendant ','','','A'),(48,3,'Packing Line Technician ','','','A'),(49,3,'Packing Forklift Operator','','','A'),(50,8,'Shipping Supervisor','','','A'),(51,8,'Segragator','','','A'),(52,8,'Loader','','','A'),(53,8,'Shipping Forklift Operator','','','A'),(54,8,'Shipping Clerk','','','A'),(55,7,'Refrigeration Supervisor','','','A'),(56,7,'Refrigeration Mechanic','','','A'),(57,9,'Electrician','','','A'),(58,9,'Janitorial Supervisor','','','A'),(59,9,'Janitor','','','A'),(60,9,'Quality Control','','','A'),(61,9,'Bin Repair','','','A');
+/*!40000 ALTER TABLE `job` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-07-24 13:41:55
