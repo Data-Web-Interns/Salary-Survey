@@ -1,0 +1,67 @@
+CREATE DATABASE  IF NOT EXISTS `salarydb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `salarydb`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: 127.0.0.1    Database: salarydb
+-- ------------------------------------------------------
+-- Server version	5.6.12-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `warehouse_job`
+--
+
+DROP TABLE IF EXISTS `warehouse_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warehouse_job` (
+  `warehouse_job_id` int(11) NOT NULL AUTO_INCREMENT,
+  `warehouse_id` int(11) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `compensation` float NOT NULL,
+  `bonus` float NOT NULL,
+  `shift_diff` float NOT NULL,
+  `auto_provided` tinytext NOT NULL,
+  `health_ins_cost` float NOT NULL,
+  `raise_expected` float NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_created` varchar(45) NOT NULL,
+  `last_updated` varchar(45) NOT NULL,
+  `status` char(1) NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`warehouse_job_id`),
+  KEY `fk_whJob_job_idx` (`job_id`),
+  KEY `fk_whJob_wh_idx` (`warehouse_id`),
+  CONSTRAINT `fk_whJob_job` FOREIGN KEY (`job_id`) REFERENCES `job` (`job_id`) ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `warehouse_job`
+--
+
+LOCK TABLES `warehouse_job` WRITE;
+/*!40000 ALTER TABLE `warehouse_job` DISABLE KEYS */;
+INSERT INTO `warehouse_job` VALUES (1,0,1,86000,20000,0,'yes',7743,2000,0,'7/3/2014','7/372014','A'),(2,0,1,0,0,0,'Yes',0,0,0,'7/3/2014','2014','0'),(3,0,1,1326,1,0,'Yes',23,23,3,'7/4/2014','2014','A'),(30,0,1,0,0,0,'Yes',0,0,0,'2014-07-07 20:06:17','2014','0'),(31,0,1,0,0,0,'Yes',0,0,0,'2014-07-08 19:36:01','2014','0'),(32,0,8,6777,67,67,'Yes',67,67,67,'2014-07-08 20:13:07','2014','0'),(33,0,8,1243,1234,1234,'Yes',0,0,0,'2014-07-11 17:41:17','2014','A');
+/*!40000 ALTER TABLE `warehouse_job` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-07-24 13:41:54
