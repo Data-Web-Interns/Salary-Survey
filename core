@@ -1,0 +1,41 @@
+<?php
+$user = "root";
+$pass = "Davesfunland12";
+$dbname = "salarydb";
+$conn = false;
+
+define("DB_HOST", "127.0.0.1");
+define("DB_NAME", "salarydb");
+define("DB_USER", "root");
+define("DB_PASS", "Davesfunland12");
+
+
+try {
+    $db = new PDO('mysql:host=localhost;dbname='.DB_NAME, DB_USER, DB_PASS);   
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+define("CORE_DIR", realpath(dirname(__FILE__)).'/');
+define("LOG_FILE", CORE_DIR."output_log.txt");
+
+// call the debug function instead!
+function debug($str) {
+  if (!file_exists(LOG_FILE)) {
+    $fp = fopen(LOG_FILE,"wb");
+    fwrite($fp,"create");
+    fclose($fp);
+  }
+  if (!is_writeable(LOG_FILE)) chmod(LOG_FILE, 0777);
+
+  // open the log file and check if the it's opened successfully
+  if (!($log = fopen(LOG_FILE, 'a'))) {
+     die('Cannot open log file');
+  }
+
+  // make sure you add a newline character at the end of the log string
+  fwrite($log, date("Y-m-d H:i:s").":  ".$str."\n");
+  fclose($log);
+}
+
